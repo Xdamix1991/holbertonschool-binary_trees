@@ -1,49 +1,32 @@
 #include "binary_trees.h"
-#include <stdio.h>
-#include <stdlib.h>
+
 /**
- * binary_tree_height - Measures the height of a binary tree
- * @tree: Pointer to the root node of the tree
- * Return: The height of the tree,
- * or 0 if the tree is NULL or a leaf node
- */
-
-size_t _binary_tree_height(const binary_tree_t *tree)
-
+* binary_tree_height - Measures the height of a binary tree
+* @tree: Pointer to the root node of the tree to measure the height
+*
+* Return: Height of the tree
+*/
+size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t left_height;
-	size_t right_height;
+if (tree == NULL) /* If the tree is empty */
+	{
+	return (0); /* Return height as 0 */
+	}
+	size_t left_height = binary_tree_height(tree->left);
+	size_t right_height = binary_tree_height(tree->right);
 
-	if (tree == NULL)
-		return (0);
-	if (tree->left == NULL && tree->right == NULL)
-		return (0);
-	left_height = _binary_tree_height(tree->left);
-	right_height = _binary_tree_height(tree->right);
-	if (left_height > right_height)
-		return (left_height + 1);
-	else
-		return (right_height + 1);
+	return ((left_height > right_height ? left_height : right_height) + 1);
 }
 
-/**
- * binary_tree_balance - Measures the balance factor of a binary tree
- * @tree: Pointer to the root node of the tree
- * Return: The balance factor of the tree, or 0 if the tree is NULL
- */
 
-int binary_tree_balance(const binary_tree_t *tree)
-
-{
-	int left_height;
-	int right_height;
-
-	if (tree == NULL)
+	int binary_tree_balance(const binary_tree_t *tree)
 	{
-		return (0);
-	}
-	left_height = _binary_tree_height(tree->left);
-	right_height = _binary_tree_height(tree->right);
-	/** by soustracting the two hights we got the balance */
-	return (left_height - right_height);
+	if (tree == NULL) /* If the tree is empty */
+		{
+		return (0); /* Return balance factor as 0 */
+		}
+	size_t left_height = binary_tree_height(tree->left);
+	size_t right_height = binary_tree_height(tree->right);
+
+return (left_height - right_height);
 }
