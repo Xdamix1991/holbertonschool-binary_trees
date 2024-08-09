@@ -7,7 +7,7 @@
  * @node: A pointer to the node to check.
  *
  * Description: This function checks whether the given node is a leaf node,
- * which means it has no children (i.e., both left and right pointers are NULL).
+ * which means it has no children both left and right pointers are NUL
  *
  * Return: 1 if the node is a leaf, otherwise 0.
  */
