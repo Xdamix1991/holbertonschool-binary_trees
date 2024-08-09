@@ -17,7 +17,7 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 	if (node->parent == node->parent->parent->left)
 		/* Parent is the left child of the grandparent, uncle is the right child */
 		return (node->parent->parent->right);
-	else
-		/** Parent is the right child of the grandparent, uncle is the left child */
-		return (node->parent->parent->left);
+
+	/** Parent is the right child of the grandparent, uncle is the left child */
+	return (node->parent->parent->left);
 }
